@@ -1,0 +1,236 @@
+/* --- Configuración de Colores y Base --- */
+:root {
+    --bg-color: #0d0d0d; /* Negro casi puro */
+    --primary-color: #7d0d94; /* Magenta Intenso */
+    --secondary-color: #39ff14; /* Verde neón (Matrix) */
+    --text-color: #e0e0e0;
+    --card-bg-color: #1a1a1a;
+    --border-color: rgba(212, 0, 255, 0.25);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 960px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+/* --- Barra de Navegación --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1rem 0;
+    background: rgba(13, 13, 13, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav-logo a {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.5rem 0;
+    position: relative;
+    font-family: 'Share Tech Mono', monospace;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Efecto de scanline en hover */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-color);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    box-shadow: 0 0 8px var(--primary-color);
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* --- Tipografía --- */
+h2 {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-shadow: 0 0 8px rgba(212, 0, 255, 0.5);
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+/* Estilo para la imagen de perfil */
+ .hero-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 70%; /* Esto la hace redonda */
+    object-fit: cover;
+    border: 4px solid var(--primary-color); /* Borde magenta */
+    margin-bottom: 2rem;
+     animation: pulse-glow 3s infinite ease-in-out; /* ¡Aquí se aplica la animación! */
+    }
+/* --- Sección de Inicio (Hero) --- */
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+/* Logo con efecto Glitch */
+.glitch-logo {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: relative;
+    color: var(--text-color);
+    text-shadow: 0.05em 0 0 rgba(255, 0, 110, 0.75), -0.025em -0.05em 0 rgba(0, 255, 235, 0.75), 0.025em 0.05em 0 rgba(0, 110, 255, 0.75);
+    animation: glitch 500ms infinite;
+}
+
+.glitch-logo span {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.glitch-logo span:first-child {
+    animation: glitch 650ms infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    transform: translate(-0.025em, -0.0125em);
+    opacity: 0.8;
+}
+
+.glitch-logo span:last-child {
+    animation: glitch 375ms infinite;
+    clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+    transform: translate(0.0125em, 0.025em);
+    opacity: 0.8;
+}
+
+@keyframes glitch {
+    0% { text-shadow: 0.05em 0 0 var(--primary-color), -0.05em 0 0 var(--secondary-color); }
+    15% { text-shadow: 0.05em 0 0 var(--primary-color), -0.05em 0 0 var(--secondary-color); }
+    16% { text-shadow: -0.05em -0.025em 0 var(--primary-color), 0.025em 0.025em 0 var(--secondary-color); }
+    49% { text-shadow: -0.05em -0.025em 0 var(--primary-color), 0.025em 0.025em 0 var(--secondary-color); }
+    50% { text-shadow: 0.025em 0.05em 0 var(--primary-color), 0.05em 0 0 var(--secondary-color); }
+    99% { text-shadow: 0.025em 0.05em 0 var(--primary-color), 0.05em 0 0 var(--secondary-color); }
+    100% { text-shadow: -0.025em 0 0 var(--primary-color), -0.05em -0.025em 0 var(--secondary-color); }
+}
+
+.hero .subtitle {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    font-weight: 300;
+    margin-top: 2rem;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.hero .subtitle span {
+    color: var(--secondary-color);
+    font-weight: 400;
+}
+
+/* --- Secciones Generales --- */
+section {
+    padding: 6rem 0;
+}
+
+/* --- Sección Sobre Mí --- */
+#about p {
+    font-size: 1.1rem;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 1.5rem auto;
+    font-weight: 300;
+}
+
+.call-to-action {
+    text-align: center;
+    font-style: italic;
+    color: var(--secondary-color);
+}
+
+/* --- Habilidades, Portafolio, Contacto, Footer (sin cambios mayores) --- */
+ .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+.skill-item { display: flex; flex-direction: column; }
+.skill-item p { margin-bottom: 8px; font-size: 1rem; }
+.progress-bar { width: 100%; height: 12px; background-color: var(--card-bg-color); border: 1px solid var(--border-color); border-radius: 10px; overflow: hidden; }
+.progress-level { height: 100%; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); border-radius: 10px; animation: load-skill 2s ease-out forwards; }
+@keyframes load-skill { from { width: 0; } to { /* El ancho final se establece inline */ } }
+
+.portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+.card { background-color: var(--card-bg-color); padding: 2rem; border-radius: 8px; border: 1px solid var(--border-color); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); }
+.card h3 { font-family: 'Exo 2', sans-serif; color: var(--text-color); margin-bottom: 1rem; }
+.card p { font-size: 0.95rem; font-weight: 300; }
+
+.contact-links { display: flex; justify-content: center; align-items: center; gap: 3rem; flex-wrap: wrap; }
+.contact-link { display: flex; align-items: center; font-size: 1.1rem; color: var(--text-color); }
+.contact-link svg { width: 28px; height: 28px; margin-right: 12px; fill: var(--text-color); transition: fill 0.3s ease, transform 0.3s ease; }
+.contact-link:hover svg { fill: var(--secondary-color); transform: scale(1.1); }
+
+footer { text-align: center; padding: 2rem 0; border-top: 1px solid var(--border-color); color: #666; font-family: 'Share Tech Mono', monospace; }
+
+/* --- Diseño Responsivo --- */
+@media(max-width: 768px) {
+    .glitch-logo { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    .hero .subtitle { font-size: 1.1rem; }
+    .nav-links { display: none; } /* Simplificamos en móvil ocultando el menú */
+    .nav-container { justify-content: center; }
+    .skills-grid { grid-template-columns: 1fr; }
+}
+
